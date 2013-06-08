@@ -1,10 +1,9 @@
 package csp
 
 import (
+	"fmt"
 	"testing"
-    "fmt"
 )
-
 
 // From XKCD: http://xkcd.com/287/
 func getSolveableProblem() Problem {
@@ -27,7 +26,7 @@ func getSolveableProblem() Problem {
 				sticks := s.FindVarByName("sticks").Value
 				sampler := s.FindVarByName("sampler").Value
 
-                return fruit*215 + frenchfries*275 + salad*335 + wings*355 + sticks*420 + sampler*580 == 1505
+				return fruit*215+frenchfries*275+salad*335+wings*355+sticks*420+sampler*580 == 1505
 			},
 		},
 	}
@@ -42,11 +41,11 @@ func Test_SolveBacktracking(t *testing.T) {
 	if len(solution) == 0 {
 		t.Fatal("No solution found")
 	}
-    
-    for _, sol := range solution {
-        fmt.Println(sol.GetValues())
-        if problem.IsConsistent(sol) != true {
-            t.Error("Solution found by backtracking is inconsistent", sol)
-        }
-    }
+
+	for _, sol := range solution {
+		fmt.Println(sol.GetValues())
+		if problem.IsConsistent(sol) != true {
+			t.Error("Solution found by backtracking is inconsistent", sol)
+		}
+	}
 }

@@ -1,6 +1,6 @@
 package csp
 
-type Value int 
+type Value int
 type Variable struct {
 	Name   string
 	Domain []Value
